@@ -11,6 +11,10 @@ int main(int argc, char *argv[])
 	{
 		printf("Error, could not open file.\n");
 	}
+	else
+	{
+		//run the hash method
+	}
 
 	return 0;
 }
