@@ -28,16 +28,21 @@ const uint32_t K[64] = {
 
 int main(int argc, char *argv[])
 {
-	FILE *file;
+	if (argc != 2) {
+    printf("Error: expected single filename as argument.\n");
+    return 1;
+    }
 
-	if (file == NULL)
-	{
-		printf("Error, could not open file.\n");
-	}
-	else
-	{
-		//run the hash method
-	}
+	FILE *file = fopen(argv[1], "rb");
+  if (!file) {
+    printf("Error: couldn't open file %s.\n", argv[1]);
+    return 1;
+  }
+  else{
+
+  }
+
+  fclose(file);
 
 	return 0;
 }
