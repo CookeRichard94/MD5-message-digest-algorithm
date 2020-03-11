@@ -1,3 +1,7 @@
+// Richard Cooke
+// G00331787@gmit.ie
+// Implemenatation of MD5 Hash Digest Algorithm
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -42,6 +46,16 @@ const uint32_t K[64] = {
 #define H(x, y, z) ((x) ^ (y) ^ (z))
 #define I(x, y, z) ((y) ^ ((x) | (~z)))
 
+#define FF(a,b,c,d,m,s,t) { a += F(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
+#define GG(a,b,c,d,m,s,t) { a += G(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
+#define HH(a,b,c,d,m,s,t) { a += H(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
+#define II(a,b,c,d,m,s,t) { a += I(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
+
+typedef union {
+  uint64_t sixfour[8];
+  uint32_t threetwo[16];
+  uint8_t eight[64];
+} BLOCK;
 
 int main(int argc, char *argv[])
 {
@@ -63,4 +77,3 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
