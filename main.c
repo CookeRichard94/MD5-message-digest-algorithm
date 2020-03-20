@@ -30,6 +30,23 @@ const uint32_t K[64] = {
 0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1 ,
 0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391 };
 
+#define S11 7
+#define S12 12
+#define S13 17
+#define S14 22
+#define S21 5
+#define S22 9
+#define S23 14
+#define S24 20
+#define S31 4
+#define S32 11
+#define S33 16
+#define S34 23
+#define S41 6
+#define S42 10
+#define S43 15
+#define S44 21
+
 /*
 &	bitwise AND
 |	bitwise inclusive OR
@@ -51,11 +68,19 @@ const uint32_t K[64] = {
 #define HH(a,b,c,d,m,s,t) { a += H(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
 #define II(a,b,c,d,m,s,t) { a += I(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
 
-typedef union {
-  uint64_t sixfour[8];
-  uint32_t threetwo[16];
-  uint8_t eight[64];
-} BLOCK;
+typedef struct {
+  uint32_t state[2];
+  uint32_t count[4];
+  unsigned char buffer[64];;
+} MD5_CTX;
+
+void MD5Init(MD5_CTX *ctx)
+{
+  ctx->state[0] = 0x67452301; 
+  ctx->state[1] = 0xEFCDAB89; 
+  ctx->state[2] = 0x98BADCFE; 
+  ctx->state[3] = 0x10325476;
+}
 
 int main(int argc, char *argv[])
 {
