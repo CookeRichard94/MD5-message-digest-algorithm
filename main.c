@@ -7,10 +7,16 @@
 #include <string.h>
 #include <stdint.h>
 
-onst uint32_t s[] = {7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
+const uint32_t s[] = {7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
                      5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20,
                      4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
                      6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21};
+
+static unsigned char PADDING[64] = {
+  0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
 
 const uint32_t K[64] = {
 0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee ,
@@ -63,10 +69,29 @@ const uint32_t K[64] = {
 #define H(x, y, z) ((x) ^ (y) ^ (z))
 #define I(x, y, z) ((y) ^ ((x) | (~z)))
 
-#define FF(a,b,c,d,m,s,t) { a += F(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
-#define GG(a,b,c,d,m,s,t) { a += G(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
-#define HH(a,b,c,d,m,s,t) { a += H(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
-#define II(a,b,c,d,m,s,t) { a += I(b,c,d) + m + t;  a = b + ROTATE_LEFT(a,s); }
+/* FF, GG, HH, and II transformations for rounds 1, 2, 3, and 4.
+Rotation is separate from addition to prevent recomputation.
+ */
+#define FF(a, b, c, d, x, s, ac) { \
+ (a) += F ((b), (c), (d)) + (x) + (UINT4)(ac); \
+ (a) = ROTATE_LEFT ((a), (s)); \
+ (a) += (b); \
+}
+#define GG(a, b, c, d, x, s, ac) { \
+ (a) += G ((b), (c), (d)) + (x) + (UINT4)(ac); \
+ (a) = ROTATE_LEFT ((a), (s)); \
+ (a) += (b); \
+}
+#define HH(a, b, c, d, x, s, ac) { \
+ (a) += H ((b), (c), (d)) + (x) + (UINT4)(ac); \
+ (a) = ROTATE_LEFT ((a), (s)); \
+ (a) += (b); \
+}
+#define II(a, b, c, d, x, s, ac) { \
+ (a) += I ((b), (c), (d)) + (x) + (UINT4)(ac); \
+ (a) = ROTATE_LEFT ((a), (s)); \
+ (a) += (b); \
+}
 
 typedef struct {
   uint32_t state[2];
@@ -80,6 +105,19 @@ void MD5Init(MD5_CTX *ctx)
   ctx->state[1] = 0xEFCDAB89; 
   ctx->state[2] = 0x98BADCFE; 
   ctx->state[3] = 0x10325476;
+}
+
+void MD5Update (context, input, inputLen)
+MD5_CTX *context;                                        /* context */
+unsigned char *input;                                /* input block */
+unsigned int inputLen;                     /* length of input block */
+{
+
+
+
+
+
+  
 }
 
 int main(int argc, char *argv[])
