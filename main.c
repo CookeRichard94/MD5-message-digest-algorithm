@@ -4,20 +4,28 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdint.h>
+#include <inttypes.h>
+#include <string.h>
 
+// The amount of bit shifts for each round 
 const uint32_t s[] = {7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
                      5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20,
                      4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
                      6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21};
 
-static unsigned char PADDING[64] = {
-  0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-};
+// enum to determine if the padding is in oeration or has been completed
+typedef enum{ 
+    READ,
+    PAD0,
+    FINISH
+}PADDING;
 
+// Pre-defined hash values used for transform rounds 1, 2, 3, and 4
+// How to get the Constants in K[i]
+//    for (i = 0; i <= 64)
+//        K[i] = floor(2^32 * abs(sin(i+1)))
+//
 const uint32_t K[64] = {
 0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee ,
 0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501 ,
@@ -93,11 +101,11 @@ Rotation is separate from addition to prevent recomputation.
  (a) += (b); \
 }
 
-typedef struct {
-  uint32_t state[2];
-  uint32_t count[4];
-  unsigned char buffer[64];;
-} MD5_CTX;
+typedef union {
+    uint8_t eight[64];
+    uint64_t sixFour[8];
+    uint32_t threeTwo[16];
+} blcok;
 
 void MD5Init(MD5_CTX *ctx)
 {
@@ -107,11 +115,8 @@ void MD5Init(MD5_CTX *ctx)
   ctx->state[3] = 0x10325476;
 }
 
-void MD5Update (context, input, inputLen)
-MD5_CTX *context;                                        /* context */
-unsigned char *input;                                /* input block */
-unsigned int inputLen;                     /* length of input block */
-{
+
+void MD5Transform(){
 
 
 
@@ -207,9 +212,7 @@ int main(int argc, char *argv[])
     printf("Error: couldn't open file %s.\n", argv[1]);
     return 1;
   }
-  else{
 
-  }
 
   fclose(file);
 
