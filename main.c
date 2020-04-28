@@ -48,51 +48,73 @@ const uint32_t k[64] = {
 uint32_t a, b, c, d;
 
 
-void md5_hash(FILE *file)
+void md5_hash_string(uint8_t *initial_message, size_t initial_length)
 {
-  
+  uint8_t *message = NULL;
 
   a = 0x67452301;
   b = 0xefcdab89;
   c = 0x98badcfe;
   d = 0x10325476;
 
+  int new_length = ((((initial_length + 8) / 64) + 1) * 64) - 8;
 
-  uint32_t aa = a;
-  uint32_t bb = b;
-  uint32_t cc = c;
-  uint32_t dd = d;
+  message = calloc(new_length + 64, 1);
 
+  memcpy(message, initial_message, initial_length);
 
+  message[initial_length] = 128;
 
-  uint32_t f, g;
- 
-  if (i < 16) {
-      f = (b & c) | ((~b) & d);
-      g = i;
-  } else if (i < 32) {
-      f = (d & b) | ((~d) & c);
-      g = (5*i + 1) % 16;
-  } else if (i < 48) {
-      f = b ^ c ^ d;
-      g = (3*i + 5) % 16;          
-  } else {
-      f = c ^ (b | (~d));
-      g = (7*i) % 16;
+  uint32_t bit_length = 8 * initial_length;
+  memcpy(message + new_length, &bit_length, 4);
+
+  for(int i = 0; i < new_length; i += 64)
+  {
+    uint32_t *m = (uint32_t *) (message + i);
+
+    uint32_t aa = a;
+    uint32_t bb = b;
+    uint32_t cc = c;
+    uint32_t dd = d;
+
+    int32_t j;
+    for(j = 0; j < 64; j++) {
+
+      uint32_t f, g;
+    
+      if (j < 16) {
+        f = (bb & cc) | ((~bb) & dd);
+        g = j;
+      } else if (j < 32) {
+        f = (dd & bb) | ((~dd) & cc);
+        g = (5*j + 1) % 16;
+      } else if (j < 48) {
+        f = bb ^ cc ^ dd;
+        g = (3*j + 5) % 16;          
+      } else {
+        f = cc ^ (bb | (~dd));
+        g = (7*j) % 16;
+      }
+
+      uint32_t temp = dd;
+      dd = cc;
+      cc = bb;
+      bb = bb + LEFT_ROTATE((aa + f + k[j] + m[g]), s[j]);
+      aa = temp;
+    }
+
+    a = a + aa;
+    b = b + bb;
+    c = c + cc;
+    d = d + dd;
+
   }
 
-  uint32_t temp = dd;
-  dd = cc;
-  cc = bb;
-  printf("rotateLeft(%x + %x + %x + %x, %d)\n", a, f, k[i], w[g], r[i]);
-  bb = bb + LEFTROTATE((aa + f + k[i] + w[g]), r[i]);
-  aa = temp;
-
-
-}
+}//MD5_HASH_STRING
 
 int main(int argc, char **argv)
 {
+  /*
 	if(argc!=2)
   {
     printf("Error: expected single filename as argument.\n");
@@ -111,6 +133,46 @@ int main(int argc, char **argv)
     md5_hash(file)
   }
   fclose(file);
+*/
+
+  if (argc < 2) {
+        printf("usage: %s 'string'\n", argv[0]);
+        return 1;
+    }
+
+  char *msg = argv[1];
+
+  //int i;
+
+  size_t len = strlen(msg);
+
+  /*if( argc >= 2 ){
+      for(i = 1; i < argc; i++)
+      {
+        printf("%s\t", argv[i]);
+      }
+    }
+    else
+    {
+      printf("No arguments presented.\n");
+    }*/
+ 
+    md5_hash_string((uint8_t *)msg, len);
+
+    uint8_t *digest;
+
+    printf ("\n====== The hashed output ======\n"); 
+    digest=(uint8_t *)&a;
+    printf("%2.2x%2.2x%2.2x%2.2x", digest[0], digest[1], digest[2], digest[3], a);
+    digest=(uint8_t *)&b;
+    printf("%2.2x%2.2x%2.2x%2.2x", digest[0], digest[1], digest[2], digest[3], b);
+    digest=(uint8_t *)&c;
+    printf("%2.2x%2.2x%2.2x%2.2x", digest[0], digest[1], digest[2], digest[3], c);
+    digest=(uint8_t *)&d;
+    printf("%2.2x%2.2x%2.2x%2.2x", digest[0], digest[1], digest[2], digest[3], d);
+    
+    printf("\n");
+
   return 0; 
 
 }
