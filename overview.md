@@ -26,6 +26,8 @@ This section is in place to provide instructions on how to clone, compile and ru
 * After the installation a linux terminal window will open, from here follow the commands presented in the terminal to set up your linux environment.
 * After the environment has been set up, enter the following command to install a C compiler  
 ``` sudo apt install gcc ```  
+* To confirm that the C compiler has been installed, enter the following command  
+``` gcc --version ````
 
 ## Clone, Compile, Run
 * From the Ubuntu subsystem, enter the following line to clone the repository  
