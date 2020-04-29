@@ -46,12 +46,19 @@ This section is in place to provide instructions on how to clone, compile and ru
 *** THE COMMAND, PROBABLY -t, PLUS WHAT IS OUTPUT( SOMETHING LIKE IF INPUT = A, OUTPUT SHOULD = WHATEVER THE HASH IS ***
 
 # Algorithm
+The MD5 message-digest algorithm is a hashing algorithm, released in 1992, that takes in a an input message of arbitrary length and outputs a 128-bit message-digest of the input[1]. It has been designed such that it is infeasible that any two different inputs will produce the same message-digest. 
+### Example
+ Input ``` Hello world ``` produces output ``` 3e25960a79dbc69b674cd4ec67a72c62 ```  
+ Input ``` hello world ``` produces output ``` 5eb63bbbe01eeed093cb22bb8f5acdc3 ```
+
+The core purpose of the MD5 algorithm is that it is used to ensure data integrity. This means that data remains consistent and can be proven to be non-altered. I found [this video](https://www.youtube.com/watch?v=33QT7xohUvI&t=)[2] to have been helpful in accurately displaying how even the most minute change will have a profound effect on the hash digest produced by the algorithm and how obvious the algorithm allows data tampering to be exposed.
+
 
 # Complexity
 
 # References
 [1] Rivest, R., 1992. RFC1321: The MD5 message-digest algorithm.  
-[2]  
+[2] https://www.youtube.com/watch?v=33QT7xohUvI&t=
 [3]  
 [4]  
 [5]  
