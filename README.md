@@ -50,3 +50,5 @@ This section is in place to provide instructions on how to clone, compile and ru
 * To run the code and to hash the contents of a file, enter the following command  
 ``` ./md5 file.txt ```
 
+## Research
+The core research for this project was done via [Rivest, R., 1992. RFC1321: The MD5 message-digest algorithm](the RFC documentation on the MD5 algorithm). My understanding derived from this documentation is more greatly outlined in the [overview.md](overview.md) report. Along with this, I used the video lectures which we were provided with on a weekly basis, the code from these videos can be found in the **"Video Tutorials"** folder. For the first 3 weeks of these videos I wrote the code in parralel with what the lecturer was writing in said video, however I found that I wasn't paying enough attention and wasn't picking up enough on what was being taught so I moved to just listen to these videos and follow along in that fashion instead. Later after I felt I was comfortable with the information in the videos I constructed the code implemented in the videos.
