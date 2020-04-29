@@ -57,8 +57,8 @@ The core purpose of the MD5 algorithm is that it is used to ensure data integrit
 # Complexity
 
 # References
-[1] Rivest, R., 1992. RFC1321: The MD5 message-digest algorithm.  
-[2] https://www.youtube.com/watch?v=33QT7xohUvI&t=
+[1] [Rivest, R., 1992. RFC1321: The MD5 message-digest algorithm.](https://www.ietf.org/rfc/rfc1321.txt)  
+[2] [MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity.](https://www.youtube.com/watch?v=33QT7xohUvI&t=)    
 [3]  
 [4]  
 [5]  
