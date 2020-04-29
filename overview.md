@@ -93,12 +93,16 @@ For this step 4 functions are created that take in 3, 32-bit "words" as their pa
 The four auxilary functions are described in the RFC document[1] as follows:   
 ```
 F(X,Y,Z) = XY v not(X) Z  
+X AND Y OR NOT X, AND Z  
   
 G(X,Y,Z) = XZ v Y not(Z)  
+X AND Z OR Y AND NOT Z  
   
 H(X,Y,Z) = X xor Y xor Z  
+X XOR Y XOR Z  
   
 I(X,Y,Z) = Y xor (X v not(Z))
+Y XOR X OR NOT Z
 ```
   
 ****** CODE SNIPPET HERE ******
