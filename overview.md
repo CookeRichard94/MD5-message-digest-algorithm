@@ -51,7 +51,7 @@ The MD5 message-digest algorithm is a hashing algorithm, released in 1992, that 
  Input ``` Hello world ``` produces output ``` 3e25960a79dbc69b674cd4ec67a72c62 ```  
  Input ``` hello world ``` produces output ``` 5eb63bbbe01eeed093cb22bb8f5acdc3 ```
 
-The core purpose of the MD5 algorithm is that it is used to ensure data integrity. This means that data remains consistent and can be proven to be non-altered. I found [this video](https://www.youtube.com/watch?v=33QT7xohUvI&t=)[2] to have been helpful in accurately displaying how even the most minute change will have a profound effect on the hash digest produced by the algorithm and how obvious the algorithm allows data tampering to be exposed. In cases such as when a file is compressed and sent to another machine this "figerprint" security is important in ensuring data itegrity.
+The core purpose of the MD5 algorithm is that it is used to ensure data integrity. This means that data remains consistent and can be proven to be non-altered. I found [this video](https://www.youtube.com/watch?v=33QT7xohUvI&t=)[2] to have been helpful in accurately displaying how even the most minute change will have a profound effect on the hash digest produced by the algorithm and how obvious the algorithm allows data tampering to be exposed. In cases such as when a file is compressed and sent to another machine this "fingerprint" security is important in ensuring data integrity.
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=33QT7xohUvI&t=" target="_blank"><img src="http://img.youtube.com/vi/33QT7xohUvI/0.jpg" 
 alt="MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity." width="240" height="180" border="10" /></a>
@@ -64,11 +64,11 @@ The padding of the input message is extending it so that when it's length(in bit
 
 ****** CODE SNIPPET HERE ******
 ## Step 2. Append Length  
-A 64 bit representation of the initial length of the input message is appended to the result of the previos steps padding process. After this has occured the length of the message is now exactly 512 bits, this now allows the message to be structured into 16, 32-bit words.  
+A 64 bit representation of the initial length of the input message is appended to the result of the previous steps padding process. After this has occurred the length of the message is now exactly 512 bits, this now allows the message to be structured into 16, 32-bit words.  
 
 ****** CODE SNIPPET HERE ******
 ## Step 3. Initialize MD Buffer  
-A four word buffer of A,B,C,D(each 32-bits) is initiliazied with the following hexidecimal values  
+A four word buffer of A,B,C,D(each 32-bits) is initialized with the following hexadecimal values  
 ```
 A: 01 23 45 67 
   
@@ -90,7 +90,7 @@ For this step 4 functions are created that take in 3, 32-bit "words" as their pa
 >>	right shift
 ~	bitwise NOT
 ```
-The four auxilary functions are described in the RFC document[1] as follows:   
+The four auxiliary functions are described in the RFC document[1] as follows:   
 ```
 F(X,Y,Z) = XY v not(X) Z  
 X AND Y OR NOT X, AND Z  
