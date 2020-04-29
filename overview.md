@@ -81,8 +81,26 @@ D: 76 54 32 10
 
 ****** CODE SNIPPET HERE ******
 ## Step 4. Process Message in 16-Word Blocks  
-
-
+For this step 4 functions are created that take in 3, 32-bit "words" as their parameters and return a single 32-bit "word" as output. This is done using bit wise operators.
+```
+&	bitwise AND
+|	bitwise inclusive OR
+^	bitwise XOR (exclusive OR)
+<<	left shift
+>>	right shift
+~	bitwise NOT
+```
+The four auxilary functions are described in the RFC document[1] as follows:   
+```
+F(X,Y,Z) = XY v not(X) Z  
+  
+G(X,Y,Z) = XZ v Y not(Z)  
+  
+H(X,Y,Z) = X xor Y xor Z  
+  
+I(X,Y,Z) = Y xor (X v not(Z))
+```
+  
 ****** CODE SNIPPET HERE ******
 ## Step 5. Output  
 
