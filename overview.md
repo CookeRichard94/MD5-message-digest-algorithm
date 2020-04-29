@@ -59,8 +59,26 @@ alt="MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify fil
 **The MD5 Algorithm is performed in 5 steps**
 
 ## Step 1. Append Padding Bits
-The padding of the input message is extending it so that when it's length(in bits) when divided by 512, leaves a remainder of 
+The padding of the input message is extending it so that when it's length(in bits) when divided by 512, leaves a remainder of 448. 
 
+
+****** CODE HERE ******
+## Step 2. Append Length  
+
+
+****** CODE HERE ******
+## Step 3. Initialize MD Buffer
+
+
+****** CODE HERE ******
+## Step 4. Process Message in 16-Word Blocks  
+
+
+****** CODE HERE ******
+## Step 5. Step 5. Output  
+
+
+****** CODE HERE ******
 # Complexity
 
 # References
