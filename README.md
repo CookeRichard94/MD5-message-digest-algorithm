@@ -1,5 +1,9 @@
 # MD5-message-digest-algorithm
 
+|  Student | ID  | Lecturer   | Module  |
+|---|---|---|---|
+|  Richard Cooke | G00331787  | Ian McLoughlin  | Theory of Algorithms  | 
+
 ## Project Statement
 You must write a program in the C programming language that calculates
 the MD5 hash digest of an input. The algorithm is specified in the Request
