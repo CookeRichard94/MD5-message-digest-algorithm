@@ -50,3 +50,13 @@ This section is in place to provide instructions on how to clone, compile and ru
 # Complexity
 
 # References
+[1] Rivest, R., 1992. RFC1321: The MD5 message-digest algorithm.  
+[2]  
+[3]  
+[4]  
+[5]  
+[6]  
+[7]  
+[8]  
+[9]  
+[10]  
