@@ -51,14 +51,21 @@ The MD5 message-digest algorithm is a hashing algorithm, released in 1992, that 
  Input ``` Hello world ``` produces output ``` 3e25960a79dbc69b674cd4ec67a72c62 ```  
  Input ``` hello world ``` produces output ``` 5eb63bbbe01eeed093cb22bb8f5acdc3 ```
 
-The core purpose of the MD5 algorithm is that it is used to ensure data integrity. This means that data remains consistent and can be proven to be non-altered. I found [this video](https://www.youtube.com/watch?v=33QT7xohUvI&t=)[2] to have been helpful in accurately displaying how even the most minute change will have a profound effect on the hash digest produced by the algorithm and how obvious the algorithm allows data tampering to be exposed.
+The core purpose of the MD5 algorithm is that it is used to ensure data integrity. This means that data remains consistent and can be proven to be non-altered. I found [this video](https://www.youtube.com/watch?v=33QT7xohUvI&t=)[2] to have been helpful in accurately displaying how even the most minute change will have a profound effect on the hash digest produced by the algorithm and how obvious the algorithm allows data tampering to be exposed. In cases such as when a file is compressed and sent to another machine this "figerprint" security is important in ensuring data itegrity.
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=33QT7xohUvI&t=" target="_blank"><img src="http://img.youtube.com/vi/33QT7xohUvI&t/0.jpg" 
+alt="MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity." width="240" height="180" border="10" /></a>
+
+**The MD5 Algorithm is performed in 5 steps**
+
+## Step 1. Append Padding Bits
+The padding of the input message is extending it so that when it's length(in bits) when divided by 512, leaves a remainder of 
 
 # Complexity
 
 # References
 [1] [Rivest, R., 1992. RFC1321: The MD5 message-digest algorithm.](https://www.ietf.org/rfc/rfc1321.txt)  
-[2] [MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity.](https://www.youtube.com/watch?v=33QT7xohUvI&t=)    
+[2] [MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity](https://www.youtube.com/watch?v=33QT7xohUvI&t=)    
 [3]  
 [4]  
 [5]  
