@@ -9,6 +9,13 @@ Force. The only pre-requisite is that your program performs the algorithm
 I suggest you allow the user to input some free text or a filename via the
 command line.
 
+## Minimum Viable Project
+The minimum standard for this project is a git [1] repository containing a
+single C file that calculates the MD5 digest of an input. The repository
+should also contain a README clearly documenting how to compile, run
+and test your program, how your program works, and how you wrote it.
+A better project will be well organised and contain detailed explanations.
+The architecture of the system will be well conceived, and examples of running the program will be provided.
 
 ## How to Run
 
