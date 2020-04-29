@@ -59,7 +59,7 @@ alt="MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify fil
 **The MD5 Algorithm is performed in 5 steps**
 
 ## Step 1. Append Padding Bits
-The padding of the input message is extending it so that when it's length(in bits) when divided by 512, leaves a remainder of 448. This padding operation is always performed even if the initial length of the input message is 448 bits. The padding will be at least 1 bit and at most 512. This padding is performed by appending a single "1" bit to the input message and then adding additional "0" bits until the new length of the message is 448, modulo 448.  
+The padding of the input message is extending it so that when it's length(in bits) when divided by 512, leaves a remainder of 448. This padding operation is always performed even if the initial length of the input message is 448 bits. The padding will be at least 1 bit and at most 512. This padding is performed by appending a single "1" bit to the input message and then adding additional "0" bits until the new length of the message is 448, modulo 512.  
 
 
 ****** CODE SNIPPET HERE ******
@@ -67,8 +67,17 @@ The padding of the input message is extending it so that when it's length(in bit
 A 64 bit representation of the initial length of the input message is appended to the result of the previos steps padding process. After this has occured the length of the message is now exactly 512 bits, this now allows the message to be structured into 16, 32-bit words.  
 
 ****** CODE SNIPPET HERE ******
-## Step 3. Initialize MD Buffer
-
+## Step 3. Initialize MD Buffer  
+A four word buffer of A,B,C,D(each 32-bits) is initiliazied with the following hexidecimal values  
+```
+A: 01 23 45 67 
+  
+B: 89 ab cd ef
+  
+C: fe dc ba 98
+  
+D: 76 54 32 10
+```
 
 ****** CODE SNIPPET HERE ******
 ## Step 4. Process Message in 16-Word Blocks  
@@ -86,9 +95,4 @@ A 64 bit representation of the initial length of the input message is appended t
 [2] [MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity](https://www.youtube.com/watch?v=33QT7xohUvI&t=)    
 [3]  
 [4]  
-[5]  
-[6]  
-[7]  
-[8]  
-[9]  
-[10]  
+[5]   
