@@ -41,4 +41,10 @@ This section is in place to provide instructions on how to clone, compile and ru
 
 # Test 
 
+*** THE COMMAND, PROBABLY -t, PLUS WHAT IS OUTPUT( SOMETHING LIKE IF INPUT = A, OUTPUT SHOULD = WHATEVER THE HASH IS ***
+
 # Algorithm
+
+# Complexity
+
+# References
