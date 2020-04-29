@@ -5,7 +5,11 @@
 
 
   **THIS FILE IS BEING USED FOR LOCAL TESTING ONLY**
+<<<<<<< HEAD
 
+=======
+*/
+>>>>>>> e2d69b5f2fb4c39621932702f4b53ea5eccfc0a0
 
 #include <stdio.h>
 #include <string.h>
