@@ -115,18 +115,28 @@ The message digest produced is output as A, B, C, D. We begin with the low-order
 # Complexity
 
 The MD5 algorithm is an extension of the MD4 algorithm, it was conceived because it was felt that MD4 was being adapted quicker than what critical review of it could be made. While the MD4 was designed to be exceptionally fast in nature, the MD5 was conceived to be slower but to provide more likelihood of increased security[1].  
-Although the time complexity of MD5 is a drop-off from that of the MD4 algorithm, it runs at a big O notation of O(n)[3], which is considered a favorable time complexity as this means that the time complexity of the algorithm grows in proportion to the length of the message it has been passed to hash. Although security-wise, both algorithms are now considered to be unsafe, the focus on security over speed by the MD5 algorithm allowed it's security to stay in tact some 10 years longer than that of the MD4 algorithm.[4] 
+Although the time complexity of MD5 is a drop-off from that of the MD4 algorithm, it runs at a big O notation of O(n)[3], which is considered a favourable time complexity as this means that the time complexity of the algorithm grows in proportion to the length of the message it has been passed to hash. Although security-wise, both algorithms are now considered to be unsafe, the focus on security over speed by the MD5 algorithm allowed it's security to stay in tact some 10 years longer than that of the MD4 algorithm.[4] 
 
 ## Collision Attacks
-In cryptography, a collision attack on a cryptographic hash tries to find two inputs producing the same hash value. While it was origially considered infeasible, hashing collision was achieved in 2005. To do this two non-identical files were structured a specific way by the researchers that the mathematical process used in the hashing process was higher than the probability to generate these hash values at random[5].
+In cryptography, a collision attack on a cryptographic hash tries to find two inputs producing the same hash value. While it was originally considered infeasible, hashing collision was achieved in 2005. To do this two non-identical files were structured a specific way by the researchers that the mathematical process used in the hashing process was higher than the probability to generate these hash values at random[5].
 The complexity for collision attacks on MD4, MD5 and SHA-1 are as follows, MD4 (the best attack has complexity 2<sup>1</sup>), MD5 (best attack: 2<sup>23</sup>), and SHA-1 (best attack: 2<sup>60</sup>)[6].
 
+## Countermeasures
+In cryptography and encryption, a common way to fight against collision attacks is the use of salt. Salt is a random string that is attached to an input word to create a different and unique hash than what would originally have been output[7]. Adding salt is most commonly used when hashing a password. The addition of salt to a password helps to protect against Brute force, like collision attacks, and Database based attacks, such as a rainbow bridge.
 
 # References
 [1] [Rivest, R., 1992. RFC1321: The MD5 message-digest algorithm.](https://www.ietf.org/rfc/rfc1321.txt)  
+This was the most used source, I found it provided a comprehensive explanation on what the MD5 algorithm was and how it would be developed. The source was primarily cited in the algorithm section of the report.   
 [2] [MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity](https://www.youtube.com/watch?v=33QT7xohUvI&t=)    
-[3] [Time Complexity of MD5](https://stackoverflow.com/questions/43625569/time-complexity-of-md5)  
-[4] [Difference between MD4 and MD5](https://security.stackexchange.com/questions/71709/difference-between-md4-and-md5-encryption)   
+This video allowed me to gain an understanding of just how minute a change triggers a complete overhaul by the md5 algorithm.   
+[3] [Time Complexity of MD5](https://stackoverflow.com/questions/43625569/time-complexity-of-md5)   
+This source outlined what the time complexity of the MD5 algorithm was, previous knowledge of big O notation was gathered in seperate modules.   
+[4] [Difference between MD4 and MD5](https://security.stackexchange.com/questions/71709/difference-between-md4-and-md5-encryption)  
+This source provided background information that provided confirmation of the MD5 being a better hashing approach then the MD4 algorithm.   
 [5] [How to break MD5 and other hash functions](https://link.springer.com/chapter/10.1007/11426639_2)  
+This source outlined how the MD5, along with other hash functions where broken using collision attacks.  
 [6] [MD4 is not One Way](https://who.rocq.inria.fr/Gaetan.Leurent/files/MD4_FSE08.pdf)   
+This source was used for citing what the complexity for attack algorithms on the MD5 and other hash functions was.   
+[7] [What is MD5 salt?](https://www.md5online.org/blog/md5-salt-hash/)    
+This source was used as a reference for what salt is in relation to cryptography.   
 
