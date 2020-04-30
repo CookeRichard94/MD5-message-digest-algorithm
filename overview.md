@@ -140,7 +140,7 @@ This was the most used source, I found it provided a comprehensive explanation o
 [2] [MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity](https://www.youtube.com/watch?v=33QT7xohUvI&t=)    
 This video allowed me to gain an understanding of just how minute a change triggers a complete overhaul by the md5 algorithm.   
 [3] [Time Complexity of MD5](https://stackoverflow.com/questions/43625569/time-complexity-of-md5)   
-This source outlined what the time complexity of the MD5 algorithm was, previous knowledge of big O notation was gathered in seperate modules.   
+This source outlined what the time complexity of the MD5 algorithm was, previous knowledge of big O notation was gathered in separate modules.   
 [4] [Difference between MD4 and MD5](https://security.stackexchange.com/questions/71709/difference-between-md4-and-md5-encryption)  
 This source provided background information that provided confirmation of the MD5 being a better hashing approach then the MD4 algorithm.   
 [5] [How to break MD5 and other hash functions](https://link.springer.com/chapter/10.1007/11426639_2)  
