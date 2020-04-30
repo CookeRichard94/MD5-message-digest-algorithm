@@ -37,14 +37,26 @@ This section is in place to provide instructions on how to clone, compile and ru
 ``` cd MD5-message-digest-algorithm/ ```
 * To compile the project code  
 ``` gcc -lm -Wall -o md5 main.c ```
-* To run the code and to hash an input string, enter the following command   
-``` ./md5 "Your string here" ```
-* To run the code and to hash the contents of a file, enter the following command  
-``` ./md5 file.txt ```
+* To run the code and to hash an input string, enter the following command:   
+``` ./md5 -s "Your string here" ```   
+* To run the code and see a set of test cases being run, enter the following command:   
+``` ./md5 -t anyArgument ```   
+* To list options to be entered, enter the following command:   
+``` ./md5 -h anyArgument ```
 
 # Test 
-
-*** THE COMMAND, PROBABLY -t, PLUS WHAT IS OUTPUT( SOMETHING LIKE IF INPUT = A, OUTPUT SHOULD = WHATEVER THE HASH IS ***
+The test cases used in this project are the same test cases used in the Official RFC document[1].
+The test cases test 7 different inputs "", "a", "abc", "message digest", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" and "12345678901234567890123456789012345678901234567890123456789012345678901234567890".  
+  
+To run the tests to ascertain whether the hash algorithm is working correctly, enter -t followed by any argument.   
+**For example**   
+``` ./md5 -t xxx```  
+The Output from running these commands should look as follows:  
+```
+Input: 'a'  Should produce output: 0cc175b9c0f1b6a831c399e269772661   
+   
+The Hash Output of this Input is: 0cc175b9c0f1b6a831c399e269772661
+```
 
 # Algorithm
 The MD5 message-digest algorithm is a hashing algorithm, released in 1992, that takes in a an input message of arbitrary length and outputs a 128-bit message-digest of the input[1]. It has been designed such that it is infeasible that any two different inputs will produce the same message-digest. 
@@ -54,8 +66,7 @@ The MD5 message-digest algorithm is a hashing algorithm, released in 1992, that 
 
 The core purpose of the MD5 algorithm is that it is used to ensure data integrity. This means that data remains consistent and can be proven to be non-altered. I found [this video](https://www.youtube.com/watch?v=33QT7xohUvI&t=)[2] to have been helpful in accurately displaying how even the most minute change will have a profound effect on the hash digest produced by the algorithm and how obvious the algorithm allows data tampering to be exposed. In cases such as when a file is compressed and sent to another machine this "fingerprint" security is important in ensuring data integrity.
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=33QT7xohUvI&t=" target="_blank"><img src="http://img.youtube.com/vi/33QT7xohUvI/0.jpg" 
-alt="MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity." width="240" height="180" border="10" /></a>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=33QT7xohUvI&t=" target="_blank"><img src="http://img.youtube.com/vi/33QT7xohUvI/0.jpg" alt="MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity." width="240" height="180" border="10" /></a>
    
 **The MD5 Algorithm is performed in 5 steps**[1]  
   ![Alt Text](Images/md5.png "Diagram of md5 Algorithm")  
