@@ -8,6 +8,7 @@ This project was created as part of the Theory of Algorithms module in the 4th y
 * README.md, which is a file written in the markdown language which contains comprehensive information on how to install and run the code. It also contains a breakdown of the research involved in the original projects development.
 * Video Tutorials(folder) which contains snippets of code provided via online lecture videos provided by the lecturer.
 * Test(folder), this folder contains .txt files which are used as part of the testing of file input to the MD5 algorithm.
+* Images(folder), contains images used in overview.md
 * md5.c, which is a c file used locally, exclusively for testing purposes.
 * main.c, which is the file that contains the MD5 algorithm and a main method, both written in the C language, this is the file which must be compiled to run the MD5 algorithm
 
@@ -56,17 +57,17 @@ The core purpose of the MD5 algorithm is that it is used to ensure data integrit
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=33QT7xohUvI&t=" target="_blank"><img src="http://img.youtube.com/vi/33QT7xohUvI/0.jpg" 
 alt="MD5 Hash Tutorial - What the MD5 hash means and how to use it to verify file integrity." width="240" height="180" border="10" /></a>
    
-**The MD5 Algorithm is performed in 5 steps**
+**The MD5 Algorithm is performed in 5 steps**[1]
 
 ## Step 1. Append Padding Bits
 The padding of the input message is extending it so that when it's length(in bits) when divided by 512, leaves a remainder of 448. This padding operation is always performed even if the initial length of the input message is 448 bits. The padding will be at least 1 bit and at most 512. This padding is performed by appending a single "1" bit to the input message and then adding additional "0" bits until the new length of the message is 448, modulo 512.  
 
 
-****** CODE SNIPPET HERE ******
+![](Images/Image1.png)
 ## Step 2. Append Length  
 A 64 bit representation of the initial length of the input message is appended to the result of the previous steps padding process. After this has occurred the length of the message is now exactly 512 bits, this now allows the message to be structured into 16, 32-bit words.  
 
-****** CODE SNIPPET HERE ******
+![](Images/Image2.png)
 ## Step 3. Initialize MD Buffer  
 A four word buffer of A,B,C,D(each 32-bits) is initialized with the following hexadecimal values  
 ```
@@ -79,7 +80,7 @@ C: fe dc ba 98
 D: 76 54 32 10
 ```
 
-****** CODE SNIPPET HERE ******
+![](Images/Image3.png)
 ## Step 4. Process Message in 16-Word Blocks  
 For this step 4 functions are created that take in 3, 32-bit "words" as their parameters and return a single 32-bit "word" as output. This is done using bit wise operators.
 ```
@@ -105,11 +106,11 @@ I(X,Y,Z) = Y xor (X v not(Z))
 Y XOR X OR NOT Z
 ```
   
-****** CODE SNIPPET HERE ******
+![](Images/Image5.png)
 ## Step 5. Output  
+The message digest produced is output as A, B, C, D. We begin with the low-order byte of A, and end with the high-order byte of D.
 
-
-****** CODE SNIPPET HERE ******
+![](Images/Image6.png)
 # Complexity
 
 # References
